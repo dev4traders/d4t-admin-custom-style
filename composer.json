@@ -1,0 +1,33 @@
+{
+    "name": "dev4traders/d4t-admin-custom-style",
+    "alias": "Custom style",
+    "description": "Custom style",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension"],
+    "homepage": "https://github.com/dev4traders/d4t-admin-custom-style",
+    "license": "MIT",
+    "version": "1.1.1",
+    "authors": [
+        {
+            "name": "mikha",
+            "email": "mikha.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "mikha-dev/dcat-admin": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "D4T\\Admin\\CustomStyle\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "D4T\\Admin\\CustomStyle\\ServiceProvider",
+        "laravel": {
+            "providers": [
+                "D4T\\Admin\\CustomStyle\\ServiceProvider"
+            ]
+        }
+    }
+}
