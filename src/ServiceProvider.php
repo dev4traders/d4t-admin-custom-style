@@ -9,6 +9,10 @@ use Dcat\Admin\Extend\ServiceProvider as ServiceProviderBase;
 
 class ServiceProvider extends ServiceProviderBase
 {
+    public const URL_CUSTOM_STYLE = 'custom-style';
+    public const FIELD_CUSTOM_STYLE = 'custom_style';
+    public const PERMISSION_CUSTOM_STYLE = 'mng.custom_style';
+
     public function getExtensionType(): ExtensionType
     {
         return ExtensionType::ADDON;
@@ -27,6 +31,23 @@ class ServiceProvider extends ServiceProviderBase
         ]
     ];
 
+    protected $menu = [
+        [
+            'title' => 'Custom Style',
+            'uri' => self::URL_CUSTOM_STYLE,
+            'icon' => 'fa-folder-open',
+            'permission_slug' => self::PERMISSION_CUSTOM_STYLE
+        ],
+    ];
+
+    protected array $permissions = [
+        [
+            'slug' => self::PERMISSION_CUSTOM_STYLE,
+            'name' => 'Manage Custom Style',
+            'path' => self::URL_CUSTOM_STYLE.'/*',
+        ],
+    ];
+
     public function settingForm()
     {
         return new Setting($this);
@@ -36,7 +57,7 @@ class ServiceProvider extends ServiceProviderBase
     {
         parent::init();
 
-        if ($this->setting('custom_style'))
-            Admin::style($this->setting('custom_style'));
+        if ($this->setting(self::FIELD_CUSTOM_STYLE))
+            Admin::style($this->setting(self::FIELD_CUSTOM_STYLE));
     }
 }

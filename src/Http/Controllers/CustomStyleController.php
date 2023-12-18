@@ -34,17 +34,17 @@ class CustomStyleController extends AdminController
         $form->disableViewCheck();
         $form->disableCreatingCheck();
         $form->disableResetButton();
-        $form->action('custom-style/save');
+        $form->action(ServiceProvider::URL_CUSTOM_STYLE.'/save');
 
-        $form->codemirror('custom_style', ServiceProvider::trans('custom-style.css'))
+        $form->codemirror(ServiceProvider::FIELD_CUSTOM_STYLE, ServiceProvider::trans('custom-style.css'))
             ->mode(CodemirrorMode::CSS)
             ->help(ServiceProvider::trans('custom-style.help_css'))
-            ->default(ServiceProvider::setting('custom_style'));
+            ->default(ServiceProvider::setting(ServiceProvider::FIELD_CUSTOM_STYLE));
         $form->saving(function (Form $form) {
 
-            ServiceProvider::setting(['custom_style' => $form->custom_style]);
+            ServiceProvider::setting([ServiceProvider::FIELD_CUSTOM_STYLE => $form->custom_style]);
 
-            return $form->response()->success(__('admin.save_succeeded')); //->redirect($form->resource(0));
+            return $form->response()->success(__('admin.save_succeeded'));
         });
 
         return $form;
