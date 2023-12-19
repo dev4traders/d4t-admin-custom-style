@@ -57,7 +57,7 @@ class ServiceProvider extends ServiceProviderBase
     {
         parent::init();
 
-        if ($this->setting(self::FIELD_CUSTOM_STYLE))
+        if (!empty($this->setting(self::FIELD_CUSTOM_STYLE)))
             Admin::style($this->setting(self::FIELD_CUSTOM_STYLE));
     }
 }
