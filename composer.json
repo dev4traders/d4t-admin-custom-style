@@ -13,9 +13,15 @@
             "email": "mikha.dev@gmail.com"
         }
     ],
+    "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/dev4traders/dcat-admin.git"
+    }
+  ],
     "require": {
         "php": "^8.1",
-        "mikha-dev/dcat-admin": "dev-main"
+        "dev4traders/dcat-admin": "dev-main"
     },
     "autoload": {
         "psr-4": {
